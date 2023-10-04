@@ -66,13 +66,19 @@ $tableau = ['groupe',
 false,
 [1,2,3,true]];
 
-debug($tableau);
-debug($titre)
+// dd($tableau);
+// debug($titre)
+
+define('USER', 'Jon Doe');
+define('NOTES',[12,16,2,6]);
+define ('ONLINE', true);
+define ('AGE', 32);
+
+dd(AGE);
 
 
 ?>
-
-<h3><?= $titre ?></h3>
+<!-- <h3>/<?//= $titre ?></h3> -->
 
 <?php
 

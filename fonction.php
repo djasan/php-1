@@ -9,4 +9,8 @@ function debug($value)
     echo '</pre>';
 }
 
-debug("Test");
+function dd($value)
+{
+    debug($value);
+    die('Script php arrété !');
+}
