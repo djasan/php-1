@@ -10,5 +10,5 @@
 <body>
 
     <?php
-    $titre = "Un titre";
+    $titre = "Un titre dans header.php";
     ?>

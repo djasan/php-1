@@ -2,7 +2,7 @@
 
 // include './header.php';
 // include_once './header.php';
-
+require './fonction.php';
 require './header.php';
 
 // Un commentaire sur une ligne
@@ -57,8 +57,25 @@ $resultat .= 'Cours PHP';
 $resultat .= '</h1>';
 echo "$resultat"; */
 
-echo $titre;
+// echo $titre;
+
+// $tableau = array();
+$tableau = ['groupe', 
+23, 
+4.5,
+false,
+[1,2,3,true]];
+
+debug($tableau);
+debug($titre)
 
 
+?>
+
+<h3><?= $titre ?></h3>
+
+<?php
 
 require './footer.php';
+
+// echo $titre;
