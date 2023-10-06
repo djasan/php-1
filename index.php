@@ -1,16 +1,16 @@
 <?php
-require './fonction.php';
+require './fonctions.php';
 
 $titre = "Boucles php";
 
-// $planetes = ['mars','terre','uranus','venus','jupiter','mercure'];
-// $planetes2 = [
-//     'm' => 'mars',
-//     't' => 'terre',
-//     'v' => 'venus',
-//     'j' => 'jupiter',
-//     'u' => 'uranus',
-// ];
+/* $planetes = ['mars','terre','uranus','venus','jupiter','mercure'];
+$planetes2 = [
+    'm' => 'mars',
+    't' => 'terre',
+    'v' => 'venus',
+    'j' => 'jupiter',
+    'u' => 'uranus',
+]; */
 
 $user = [
     'nom' => 'Doupet Lucien',
@@ -18,6 +18,6 @@ $user = [
     'competence' => ['php','react','python']
 ];
 
-// Afficher dans une liste ul toutes les données de ce user avec foreach
+// if/else/elseif
 
 require './index.view.php';

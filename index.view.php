@@ -9,18 +9,19 @@
 
 <body>
     <h1><?= $titre ?></h1>
+    <?php
 
-    <!--
-    dbug($planetes2);
+    // dbug($planetes2);
 
-     foreach($planetes as $planete) {
+    /* foreach($planetes as $planete) {
     echo ucwords($planete) . '<br>';
 }
+ */
     // foreach($planetes2 as $tralala) {
     //     echo ucwords($tralala) . '<br>';
     // }
 
-    foreach ($planetes as $clef => $valeur) {
+    /* foreach ($planetes as $clef => $valeur) {
         echo $clef . ' : ' . $valeur . '<br>';
     }
 
@@ -33,17 +34,15 @@
 
     foreach ($planetes2 as $clef => $valeur) :
         echo $clef . ' : ' . $valeur . '<br>';
-    endforeach;
--->
-    <?php
+    endforeach; */
 
+// Afficher dans une liste ul toutes les données de ce user avec for each
 
     dbug($user);
 
-    foreach ($user as $key => $value) :
+    foreach($user as $key => $value) :
         echo $key . ' : ' . $value;
-    endforeach; 
-
+    endforeach;
 
     ?>
 </body>
