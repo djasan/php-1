@@ -42,7 +42,7 @@
 
     foreach ($user as $key => $value) :
         echo $key . ' : ' . $value;
-    endforeach;
+    endforeach; 
 
 
     ?>
