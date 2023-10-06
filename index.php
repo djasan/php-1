@@ -1,23 +1,19 @@
 <?php
-require './fonctions.php';
+require './fonction.php';
 
 $titre = "Boucles php";
 
-/* $planetes = ['mars','terre','uranus','venus','jupiter','mercure'];
-$planetes2 = [
-    'm' => 'mars',
-    't' => 'terre',
-    'v' => 'venus',
-    'j' => 'jupiter',
-    'u' => 'uranus',
-]; */
+// $age = 10;
+$age = 20;
 
-$user = [
-    'nom' => 'Doupet Lucien',
-    'email' => 'ldoupe@yaya.com',
-    'competence' => ['php','react','python']
-];
+// if($age >= 18) {
+//     echo 'Peut voter.';
+// }
 
-// if/else/elseif
+if($age >= 18) :
+    echo 'Vous pouvez voter.';
+endif;
 
-require './index.view.php';
+
+
+// require './index.view.php';
