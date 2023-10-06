@@ -1,6 +1,6 @@
 <?php
 
-function debug($value)
+function dbug($value)
 {
     echo '<pre style="background-color:black;
     color:white;overflow: auto;padding: 10px;">';
@@ -11,6 +11,6 @@ function debug($value)
 
 function dd($value)
 {
-    debug($value);
+    dbug($value);
     die('Script php arrété !');
 }
