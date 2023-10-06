@@ -4,7 +4,7 @@ require './fonction.php';
 
 //Tableau indexé :
 
-// $titre = "Operateur php";
+$titre = "Operateur php";
 
 // $tab1 = [];
 // $notes = [12, 14, 6, 10];
@@ -22,7 +22,11 @@ require './fonction.php';
 //Tableau associatif :
 
 
-    
+$fruits = [
+    'banane' => 'jaune',
+    'pomme' => 'rouge', 
+    'kiwi' => 'vert'
+];
 
 
 require './index.view.php';
