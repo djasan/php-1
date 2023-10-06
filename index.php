@@ -1,61 +1,21 @@
 <?php
-
+// phpinfo()
 require './fonction.php';
 
 $titre = "Operateur php";
 
-$x = 4;
-$y = 2;
-$z = 5;
+$tab1 = [];
+$notes = [12, 14, 6, 10];
 
-/*
-Les Operateurs :
+$tab1[] = 'Janvier';
+$tab1[] = 45;
+$tab1[] = true;
 
-+
--
-*
-/
-**
-%
+array_push($tab1, 'Voiture', 10.5, [45, true, 'Truc']);
 
-*/
+$tabFusion = array_merge($tab1, $notes);
 
-// $calcul = $x + $y;
-// $calcul = $x - $y;
-// $calcul = $x * $y;
-// $calcul = $x / $y;
-// $calcul = $x ** $y;
-// $calcul = $x % $y;
-// $calcul = ($x + $z) * $y;
-
-//$x += 5; // $x = $x + 5
-//$x -=5; // $x = $x - 5
-//$x *= 5; // $x = $x * 5
-//$x /= 5; // $x = $x / 5
-//$x **= 5; // $x = $x ** 5
-//$x %= 5; // $x = $x % 5
-
-// dd($x);
-
-// $i =0;
-// $i++; // $i = $i + 1
-
-// $i--; // $i = $i - 1
-
-// dd($i);
-
-// $anneeDeNaissance = 1990;
-
-// $age = date("Y") - $anneeDeNaissance;
-// dd($age);
-
-//Calcule le prix TTC 
-$prixHT = 34;
-$tva = 10;
-
-$prixTTC = $prixHT + ($tva * $prixHT) / 100;
-
-dd($prixTTC);
+dd($tabFusion[5][2]);
 
 
 require './index.view.php';
