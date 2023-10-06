@@ -2,20 +2,27 @@
 // phpinfo()
 require './fonction.php';
 
-$titre = "Operateur php";
+//Tableau indexé :
 
-$tab1 = [];
-$notes = [12, 14, 6, 10];
+// $titre = "Operateur php";
 
-$tab1[] = 'Janvier';
-$tab1[] = 45;
-$tab1[] = true;
+// $tab1 = [];
+// $notes = [12, 14, 6, 10];
 
-array_push($tab1, 'Voiture', 10.5, [45, true, 'Truc']);
+// $tab1[] = 'Janvier';
+// $tab1[] = 45;
+// $tab1[] = true;
 
-$tabFusion = array_merge($tab1, $notes);
+// array_push($tab1, 'Voiture', 10.5, [45, true, 'Truc']);
 
-dd($tabFusion[5][2]);
+// $tabFusion = array_merge($tab1, $notes);
+
+// dd($tabFusion[5][2]);
+
+//Tableau associatif :
+
+
+    
 
 
 require './index.view.php';
