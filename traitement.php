@@ -4,6 +4,10 @@ require './fonction.php';
 // dbug($_GET);
 // dbug($_POST);
 // dbug($_REQUEST);
+
+// dbug(htmlspecialchars($_GET['nom']));
+dbug(htmlentities($_GET['nom']));
+
 // if (isset($_POST['submitted'])) :
 if ($_SERVER['REQUEST_METHOD'] === 'POST') :
     echo "Votre nom est : ", $_POST['nom'], '<br>';
@@ -30,6 +34,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') :
         if ($competence === 'python') {
             echo "Vous avez la compétence : Python", "<br>";
         }
+
     }
 endif;
-?>
