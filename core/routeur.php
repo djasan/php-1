@@ -20,8 +20,11 @@ function urlToController($uriPath, $routes)
     endif;
 }
 
-function abort()
+function abort($code = 404)
 {
+    http_response_code($code);
+    require 'views/$code.php';
+    exit();
     require 'views/404.php';
     exit();
 }
