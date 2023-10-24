@@ -1,5 +1,5 @@
 <?php
-require 'routes.php';
+require 'config/routes.php';
 
 function dbug($value)
 {
@@ -12,5 +12,5 @@ function dbug($value)
 function dd($value)
 {
     dbug($value);
-    die('Script php arrété !!!');
+    die('Script php arrété !');
 }
