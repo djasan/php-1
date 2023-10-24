@@ -15,7 +15,7 @@ function urlToController($uriPath, $routes)
 {
     if (array_key_exists($uriPath, $routes)) :
         require $routes[$uriPath];
-    else :
+else :
         abort();
     endif;
 }
@@ -23,8 +23,6 @@ function urlToController($uriPath, $routes)
 function abort($code = 404)
 {
     http_response_code($code);
-    require 'views/$code.php';
-    exit();
     require 'views/404.php';
     exit();
 }
