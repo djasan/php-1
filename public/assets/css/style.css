@@ -52,3 +52,18 @@ nav ul a {
 h2 {
   margin: 1rem 20px;
 }
+input {
+  display: block;
+  margin: 30px;
+}
+select {
+  display: block;
+  margin: 30px;
+}
+label {
+  display: block;
+  margin: 0px 30px;
+}
+textarea {
+  margin: 10px 30px;
+}
