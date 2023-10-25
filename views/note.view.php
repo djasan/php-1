@@ -4,7 +4,7 @@
 <p><?= $note['content'] ?></p>
 <p>Publiée le : <?= $note['created_at'] ?> par : <?= $note['author_name'] ?> </p>
 
-<p><a href="/note-delete?id=<?=$note['id']?>">Supprimer cette note</a></p>
+<p><a href="/note-delete?id=<?=$note['id']?>" onclick="return confirm('Etes vous certain de vouloir supprimer cette note ?')">Supprimer cette note</a></p>
 <p><a href="/notes">Retour à la liste des notes</a></p>
 </body>
 </html>
