@@ -12,13 +12,39 @@
   padding: 0;
   font-family: "Lato-Light", "sans-serif";
   box-sizing: border-box;
-  --imagewidth: 70%;
-  --messagewidth: 95%;
-  --sombre: #202b38;
 }
 html {
   scroll-behavior: smooth;
 }
-body {
-  background-color: var(--sombre);
+nav {
+  background-color: #2e8db3;
+  height: 8vh;
+}
+
+li {
+margin: 0px 30px;
+list-style: none;
+}
+
+nav ul {
+  display: flex;
+  justify-content: flex-end;
+}
+
+nav li {
+  font-weight: 20px;
+  margin: 30px;
+  display: inline-block;
+}
+
+h1 {
+  margin: 2rem 20px;
+}
+
+p {
+  margin: 1rem 20px;
+}
+
+nav ul a {
+  color: rgb(43, 247, 179);
 }
