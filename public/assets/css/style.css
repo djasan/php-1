@@ -22,8 +22,8 @@ nav {
 }
 
 li {
-margin: 0px 30px;
-list-style: none;
+  margin: 0px 30px;
+  list-style: none;
 }
 
 nav ul {
@@ -47,4 +47,8 @@ p {
 
 nav ul a {
   color: rgb(43, 247, 179);
+}
+
+h2 {
+  margin: 1rem 20px;
 }
