@@ -67,3 +67,15 @@ label {
 textarea {
   margin: 10px 30px;
 }
+
+#croix {
+background-color: red;
+color: white;
+}
+
+#new-note{
+font-size: 2rem;
+background-color: rgb(236, 226, 226);
+cursor: pointer;
+margin-top: 2rem;
+}
