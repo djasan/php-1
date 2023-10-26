@@ -7,16 +7,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') :
 
     $errors = [];
 
-    $title = filter_var(($_POST['title']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $content = filter_var(($_POST['content']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $title = trim(filter_var(($_POST['title']), FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $content =  trim(filter_var(($_POST['content']), FILTER_SANITIZE_FULL_SPECIAL_CHARS));
     $user = filter_var(($_POST['user']), FILTER_SANITIZE_NUMBER_INT);
 
-    if (strlen($title) >= 1) {
+/*     if (strlen($title) >= 100 || strlen($title) === 0) {
         $errors[] = 'Titre trop long !';
     }
-    if (strlen($content) >= 1) {
+    if (strlen($content) >= 1000 || strlen($title) === 0) {
         $errors[] = 'Contenu trop long !';
+    } */
+
+    if (strlen($title) >= 100 || strlen($title) === 0 || strlen($content) >= 1000 || strlen($content) === 0) {
+        $errors[] = 'Titre ou contenu trop long !';
     }
+
     if (empty($errors)) :
         $noteNew = $connexion->prepare('
         INSERT INTO note (title, content, user_id)

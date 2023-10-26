@@ -17,8 +17,9 @@
     </select>
     <input id="submit" type="submit" value="Ajouter">
 </form>
+
 <?php
-if (!empty($errors)) {
+if (isset($errors) && !empty($errors)) {
     foreach ($errors as $error) {
         echo '<p class= "error">' . $error . '</p>';
     }
