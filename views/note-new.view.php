@@ -12,10 +12,15 @@
         <?php foreach ($users as $user) : ?>
             <option value="<?= $user['user_id'] ?>
             "><?= $user['name'] ?>
-        </option>
+            </option>
         <?php endforeach; ?>
     </select>
-    <input type="submit" value="Ajouter">
+    <input id="submit" type="submit" value="Ajouter">
 </form>
-
-<?php require 'partials/footer.php'; ?>
+<?php
+if (!empty($errors)) {
+    foreach ($errors as $error) {
+        echo '<p class= "error">' . $error . '</p>';
+    }
+}
+require 'partials/footer.php'; ?>

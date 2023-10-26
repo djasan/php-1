@@ -22,7 +22,7 @@ nav {
 }
 
 li {
-  margin: 0px 30px;
+  margin: 25px 30px;
   list-style: none;
 }
 
@@ -54,32 +54,47 @@ h2 {
 }
 input {
   display: block;
-  margin: 30px;
+  margin: 10px 30px;
 }
 select {
   display: block;
-  margin: 30px;
+  margin: 10px 30px;
 }
 label {
   display: block;
   margin: 0px 30px;
+  font-size: 1.5rem;
 }
 textarea {
   margin: 10px 30px;
 }
 
 #croix {
-background-color: red;
-color: white;
+  background-color: red;
+  padding: 5px;
+  color: white;
+  border: solid 1px black;
 }
 
-#new-note{
-font-size: 2rem;
-background-color: rgb(236, 226, 226);
-cursor: pointer;
-margin-top: 2rem;
+#new-note {
+  font-size: 2rem;
+  background-color: rgb(236, 226, 226);
+  cursor: pointer;
+  margin-top: 2rem;
+  border: solid 1px black;
 }
 
 ul {
-margin: 20px 0px;
+  margin: 20px 0px;
+}
+
+#submit {
+padding: 10px 20px;
+}
+
+.error {
+color: red;
+border: solid 1px black;
+padding: 5px;
+width: 10%;
 }
