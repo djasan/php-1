@@ -21,6 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') :
     if (strlen($title) >= 100 || strlen($title) === 0 || strlen($content) >= 1000 || strlen($content) === 0) {
         $errors[] = 'Titre ou contenu trop long !';
     }
+    
+    if (empty($user) || $user == "") {
+        $errors[] = 'Veuillez sélectionner un auteur.';
+    }
 
     if (empty($errors)) :
         $noteNew = $connexion->prepare('
