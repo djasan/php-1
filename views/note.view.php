@@ -1,5 +1,5 @@
 <?php require 'partials/header.php'; ?>
-<h1>Notes :</h1>
+<h1>Notes :</h1><hr>
 <h2><?= $note['title'] ?></h2>
 <p><?= $note['content'] ?></p>
 <p>Publiée le : <?= $note['created_at'] ?> par : <?= $note['author_name'] ?> </p>
