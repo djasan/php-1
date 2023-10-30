@@ -15,7 +15,7 @@
             </option>
         <?php endforeach; ?>
     </select>
-    <input id="submit" type="submit" value="Ajouter">
+    <input id="submit" type="submit" value="Confirmer">
 </form>
 
 <?php
