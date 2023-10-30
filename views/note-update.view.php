@@ -4,8 +4,8 @@
 
 <form method="POST">
     <label for="title">Titre</label>
-    <input type="text" name="title" id="title" value="<?php if (isset($_POST['title'])) echo htmlspecialchars($_POST['title']); ?>">
-    <textarea name="content" id="content" cols="30" rows="10"><?php if (isset($_POST['content'])) echo htmlspecialchars($_POST['content']); ?></textarea>
+    <input type="text" name="title" id="title" value="<?= isset($_POST['title']) ? $_POST['title'] : $noteUpdate['title'] ?>">
+    <textarea name="content" id="content" cols="30" rows="10"><?= isset($_POST['content']) ? $_POST['content'] : $noteUpdate['content'] ?></textarea>
     <label for="user">Auteur :</label>
     <select name="user" id="user">
         <option value="" selected>Sélectionnez un auteur</option>
