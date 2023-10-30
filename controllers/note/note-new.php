@@ -1,7 +1,7 @@
 <?php
 require 'models/Database.php';
-
-$users = $connexion->query('SELECT * FROM user')->fetchAll(PDO::FETCH_ASSOC);
+$requete = 'SELECT user_id, name FROM user';
+$users = $connexion->query($requete)->fetchAll(PDO::FETCH_ASSOC);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') :
 
@@ -10,13 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') :
     $title = trim(filter_var(($_POST['title']), FILTER_SANITIZE_FULL_SPECIAL_CHARS));
     $content =  trim(filter_var(($_POST['content']), FILTER_SANITIZE_FULL_SPECIAL_CHARS));
     $user = filter_var(($_POST['user']), FILTER_SANITIZE_NUMBER_INT);
-
-/*     if (strlen($title) >= 100 || strlen($title) === 0) {
-        $errors[] = 'Titre trop long !';
-    }
-    if (strlen($content) >= 1000 || strlen($title) === 0) {
-        $errors[] = 'Contenu trop long !';
-    } */
 
     if (strlen($title) >= 100 || strlen($title) === 0 || strlen($content) >= 1000 || strlen($content) === 0) {
         $errors[] = 'Titre ou contenu trop long !';
