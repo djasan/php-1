@@ -69,14 +69,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') :
         $noteNew->bindValue(':id', $id, PDO::PARAM_INT);
 
         $noteNew->execute();
+        header('Location: /notes');
 
-        $lastInsertId = $connexion->lastInsertId();
-        if ($lastInsertId) :
-            header('Location: /notes');
-            exit();
-        else :
-            abort();
-        endif;
     endif;
 
 endif;
