@@ -1,4 +1,4 @@
-<?php require 'partials/header.php'; ?>
+<?php require 'views/partials/header.php'; ?>
 <h1>Notes :</h1>
 <hr>
 <h2><?= $note['title'] ?></h2>
@@ -12,4 +12,4 @@
 </body>
 
 </html>
-<?php require 'partials/footer.php'; ?>
+<?php require 'views/partials/footer.php'; ?>

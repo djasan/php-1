@@ -1,4 +1,4 @@
-<?php require 'partials/header.php'; ?>
+<?php require 'views/partials/header.php'; ?>
 
 <h2>Modifer cette note</h2>
 <form method="POST">
@@ -41,4 +41,4 @@ if (isset($errors) && !empty($errors)) :
 endif;
 ?>
 
-<?php require 'partials/footer.php' ?>
+<?php require 'views/partials/footer.php' ?>

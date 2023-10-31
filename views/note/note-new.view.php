@@ -1,4 +1,4 @@
-<?php require 'partials/header.php'; ?>
+<?php require 'views/partials/header.php'; ?>
 
 <h2>Ajout d'une nouvelle note :</h2>
 
@@ -24,4 +24,4 @@ if (isset($errors) && !empty($errors)) {
         echo '<p class="error">' . $error . '</p>';
     }
 }
-require 'partials/footer.php'; ?>
+require 'views/partials/footer.php'; ?>

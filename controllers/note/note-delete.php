@@ -14,4 +14,4 @@ if (isset($id)) {
     }
 }
 
-require 'views/note-delete.view.php';
+require 'views/note/note-delete.view.php';

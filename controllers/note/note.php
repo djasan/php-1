@@ -10,4 +10,4 @@ $note->execute();
 $note = $note->fetch();
 
 
-require 'views/note.view.php';
+require 'views/note/note.view.php';
