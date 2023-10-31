@@ -5,5 +5,6 @@
         <li><a href="/note-new">Ajouter note</a></li>
         <li><a href="/contact">Contact</a></li>
         <li><a href="/admin">Dashboard</a></li>
+        <li><a href="/user">Utilisateur</a></li>
     </ul>
 </nav>
