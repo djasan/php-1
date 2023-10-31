@@ -4,7 +4,7 @@ require 'models/Database.php';
 $requete = "SELECT user_id,name FROM user";
 $users = $connexion->query($requete)->fetchAll();
 
-if ( !isset($_GET['id']) || !is_numeric($_GET['id']) || empty($_GET['id']) ) :
+if (!isset($_GET['id']) || !is_numeric($_GET['id']) || empty($_GET['id'])) :
     abort();
 endif;
 
@@ -26,9 +26,9 @@ $noteUpdate->bindParam(':id', $id);
 
 $noteUpdate->execute();
 
-$noteUpdate = $noteUpdate->fetch(); 
+$noteUpdate = $noteUpdate->fetch();
 
-if ( empty($noteUpdate) || $noteUpdate === false ) :
+if (empty($noteUpdate) || $noteUpdate === false) :
     abort();
 endif;
 
@@ -54,24 +54,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') :
         $errors[] = 'Contenu supérieur à 1000 caratéres !!!';
     endif;
 
-    if(empty($_POST['author']) || strlen($_POST['author'] === 0)) :
+    if (empty($_POST['author']) || strlen($_POST['author'] === 0)) :
         $errors[] = 'Aucun auteur séléctionné !!!';
     endif;
 
     if (empty($errors)) :
         $noteNew = $connexion->prepare('UPDATE note SET title = :title, content = :content, user_id = :user_id WHERE id = :id');
-        
+
+        $noteNew = $connexion->prepare('UPDATE note SET title = :title, content = :content, user_id = :user_id WHERE id = :id');
+
         $noteNew->bindValue(':title', $title, PDO::PARAM_STR);
         $noteNew->bindValue(':content', $content, PDO::PARAM_STR);
         $noteNew->bindValue(':user_id', $author, PDO::PARAM_INT);
-        
+        $noteNew->bindValue(':id', $id, PDO::PARAM_INT);
+
         $noteNew->execute();
 
         $lastInsertId = $connexion->lastInsertId();
-        if($lastInsertId) :
+        if ($lastInsertId) :
             header('Location: /notes');
             exit();
-        else:
+        else :
             abort();
         endif;
     endif;
