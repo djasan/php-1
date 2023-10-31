@@ -16,12 +16,12 @@
 html {
   scroll-behavior: smooth;
 }
-
-li {
-  margin: 25px 30px;
-  list-style: none;
+body {
+  width: 100%;
+  margin: 0;
+  background-color: #202b38;
   color: white;
-  text-decoration: none;
+  margin: auto;
 }
 
 nav ul {
@@ -32,9 +32,19 @@ nav ul {
 nav li {
   font-weight: 20px;
   margin: 30px;
+  color: #ffffff;
+  text-decoration: none;
   display: inline-block;
 }
 
+a:visited {
+  text-decoration: none;
+  color: #ffffff;
+}
+a:link {
+  text-decoration: none;
+  color: #ffffff;
+}
 h1 {
   margin: 2rem 20px;
 }
@@ -94,10 +104,12 @@ ul {
   padding: 0px 8px;
 }
 
+table {
+margin-top: 1rem;
+}
+
 #hr1 {
   width: 15%;
-  padding-bottom: 20px;
-  margin-left: 20px;
 }
 
 #notes {
@@ -107,15 +119,30 @@ ul {
 
 table button {
   margin: 10px 0px;
-  width: 100%;
+  width: 120%;
   display: block;
 }
-table {
+table,
+tr,
+td,
+th {
   width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.233);
+}
+td,
+th {
+  padding: 45px !important;
 }
 
-th,
-td {
-  padding: 8px;
-  text-align: left;
+th{
+text-align: center !important;
+}
+button {
+background-color: #3f5570;
+text-decoration: none;
+color: white;
+padding : 10px;
+}
+.note {
+margin: 30px;
 }

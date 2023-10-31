@@ -3,7 +3,7 @@
 <h1 id="notes">Notes :</h1><hr id="hr1">
 <ul>
   <?php foreach ($notes as $note) : ?>
-    <li>
+    <li class="note">
       <a href="/note?id=<?= $note['id'] ?>"> <?= $note['title'] ?> </a>
       <a id="croix" href="/note-delete?id=<?= $note['id'] ?>" onclick="return confirm('Etes vous certain de vouloir supprimer cette note ?')"> X </a>
     </li>
