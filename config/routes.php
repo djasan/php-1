@@ -10,5 +10,7 @@ $routes = [
     '/note-update' => 'controllers/note/note-update.php',
     '/admin' => 'controllers/admin/admin.php',
     '/user' => 'controllers/user/user.php',
-    '/modif-user' => 'controllers/user/modif-user.php'
+    '/modif-user' => 'controllers/user/modif-user.php',
+    '/userlist' => 'controllers/user/user-list.php',
+    '/delete-list' => 'controllers/user/delete-list.php',
 ];

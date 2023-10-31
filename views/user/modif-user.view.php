@@ -1,7 +1,8 @@
 <?php require 'views/partials/header.php';
 ?>
-<form method="POST" action="update_user.php">
-    <input type="hidden" name="user_id" value="<?php echo $user['user_id']; ?>">
+
+<h1>Modifier l'utilisateur</h1>
+<form method="POST" action="">
     <label for="name">Nom :</label>
     <input type="text" name="name" value="<?php echo $user['name']; ?>">
     <br>

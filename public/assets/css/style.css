@@ -71,20 +71,19 @@ textarea {
   border: solid 1px black;
 }
 
-
 ul {
   margin: 20px 0px;
 }
 
 #submit {
-padding: 10px 20px;
+  padding: 10px 20px;
 }
 
 .error {
-color: red;
-border: solid 1px black;
-padding: 5px;
-width: 25%;
+  color: red;
+  border: solid 1px black;
+  padding: 5px;
+  width: 25%;
 }
 
 #new-note2 {
@@ -96,14 +95,14 @@ width: 25%;
 }
 
 #hr1 {
-width: 15%;
-padding-bottom: 20px;
-margin-left: 20px;
+  width: 15%;
+  padding-bottom: 20px;
+  margin-left: 20px;
 }
 
 #notes {
-margin-bottom: 0px;
-margin-left: 30px;
+  margin-bottom: 0px;
+  margin-left: 30px;
 }
 
 table button {
@@ -115,11 +114,8 @@ table {
   width: 100%;
 }
 
-th, td {
+th,
+td {
   padding: 8px;
   text-align: left;
-}
-
-.actions {
-  white-space: nowrap;
 }
