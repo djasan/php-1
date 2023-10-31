@@ -1,13 +1,19 @@
 <?php
 require 'models/Database.php';
 
-$sql = "SELECT note.id AS Note_ID, note.user_id AS User_ID, note.title AS Title, note.content AS Content FROM note";
+$sql = "SELECT note.id AS Note_ID, note.user_id AS User_ID, user.name AS Name, note.title AS Title, note.content AS Content 
+        FROM note
+        LEFT JOIN user ON note.user_id = user.user_id";
 
 try {
     $result = $connexion->query($sql);
 
     if ($result) {
         $notes = $result->fetchAll();
+
+        foreach ($notes as &$note) {
+            $note['Content'] = (strlen($note['Content']) > 100) ? substr($note['Content'], 0, 100) . '...' : $note['Content'];
+        }
     } else {
         $notes = [];
         echo "Aucun résultat trouvé dans la table note.";
@@ -16,7 +22,4 @@ try {
     echo "Erreur : " . $e->getMessage();
 }
 
-
-
 require 'views/admin/admin.view.php';
-
