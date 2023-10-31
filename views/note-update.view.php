@@ -36,7 +36,6 @@ if (isset($errors) && !empty($errors)) :
     foreach ($errors as $error) :
 ?>
     <p class="error"><?=$error?></p>    
-    <!--<p class="error"><?//=$errors?></p>-->
 <?php
         endforeach;
 endif;
