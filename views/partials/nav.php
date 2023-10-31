@@ -4,5 +4,5 @@
         <li><a href="/notes">Notes</a></li>
         <li><a href="/note-new">Ajouter note</a></li>
         <li><a href="/contact">Contact</a></li>
-    </ul><hr>
+    </ul>
 </nav>
