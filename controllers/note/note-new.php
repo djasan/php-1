@@ -6,7 +6,18 @@ $users = $connexion->query($requete)->fetchAll();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') :
     $errors = [];
-    //$errors = '';
+
+    if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+        $imageTmpName = $_FILES['image']['tmp_name'];
+
+        $imageData = file_get_contents($imageTmpName);
+
+        $escapedImageData = $connexion->quote($imageData);
+
+        $insertImageQuery = $connexion->prepare('INSERT INTO note (image) VALUES (?)');
+        $insertImageQuery->bindParam(1, $escapedImageData, PDO::PARAM_LOB);
+        $insertImageQuery->execute();
+    }
 
     $title = trim(filter_var($_POST['title'], FILTER_SANITIZE_FULL_SPECIAL_CHARS));
     $content = trim(filter_var($_POST['content'], FILTER_SANITIZE_FULL_SPECIAL_CHARS));
