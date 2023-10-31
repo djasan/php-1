@@ -12,14 +12,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $content = trim(filter_var($_POST['content'], FILTER_SANITIZE_FULL_SPECIAL_CHARS));
     $user = filter_var($_POST['user'], FILTER_SANITIZE_NUMBER_INT);
 
-    if (strlen($title) >= 100 || strlen($title) === 0 || strlen($content) >= 1000 || strlen($content) === 0) {
-        $errors[] = 'Titre ou contenu trop long !';
-    }
+    if (strlen($title) === 0) :
+        $errors[] = 'Titre vide !!!';
+    endif;
 
-    if (empty($user)) {
-        $errors[] = 'Veuillez sélectionner un auteur.';
-    }
+    if (strlen($title) >= 100) :
+        $errors[] = 'Titre trop long !!!';
+    endif;
 
+    if (strlen($content) === 0) :
+        $errors[] = 'Contenu vide !!!';
+    endif;
+
+    if (strlen($content) >= 1000) :
+        $errors[] = 'Contenu supérieur à 1000 caratéres !!!';
+    endif;
+
+    if (empty($_POST['author']) || strlen($_POST['author'] === 0)) :
+        $errors[] = 'Aucun auteur séléctionné !!!';
+    endif;
     if (empty($errors)) {
         $noteNew = $connexion->prepare('
             INSERT INTO note (title, content, user_id)
@@ -29,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $noteNew->bindParam(':content', $content, PDO::PARAM_STR);
         $noteNew->bindParam(':user_id', $user, PDO::PARAM_INT);
         $noteNew->execute();
-    
+
         $lastInsertId = $connexion->lastInsertId();
         if ($lastInsertId) {
             header('Location: /notes');
