@@ -1,7 +1,7 @@
 <?php
 require 'views/partials/header.php';
 ?>
-
+<h1>Dashboard</h1>
 <button><a href="/note-new">Crée une nouvelle note</a></button>
 <table border="1">
     <tr>

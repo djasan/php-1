@@ -12,7 +12,7 @@ try {
         $notes = $result->fetchAll();
 
         foreach ($notes as &$note) {
-            $note['Content'] = (strlen($note['Content']) > 100) ? substr($note['Content'], 0, 100) . '...' : $note['Content'];
+            $note['Content'] = (strlen($note['Content']) > 80) ? substr($note['Content'], 0, 80) . '...' : $note['Content'];
         }
     } else {
         $notes = [];
@@ -22,4 +22,4 @@ try {
     echo "Erreur : " . $e->getMessage();
 }
 
-require 'views/admin/admin.view.php';
+require 'views/admin/index.view.php';
