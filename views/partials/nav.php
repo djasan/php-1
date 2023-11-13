@@ -6,5 +6,7 @@
         <li><a href="/contact">Contact</a></li>
         <li><a href="/admin">Admin</a></li>
         <li><a href="/users">User</a></li>
+        <li><a href="/register">Register</a></li>
+        <li><a href="/login">Login</a></li>
     </ul>
 </nav>
