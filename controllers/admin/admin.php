@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 require 'models/Database.php';
 
 $sql = "SELECT note.id AS Note_ID, note.user_id AS User_ID, user.name AS Name, note.title AS Title, note.content AS Content 

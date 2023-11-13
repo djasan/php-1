@@ -1,4 +1,7 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 require 'models/Database.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {

@@ -1,4 +1,7 @@
 <?php 
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 require 'models/Database.php';
 
 $select_query = "SELECT * FROM `user`";

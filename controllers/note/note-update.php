@@ -1,4 +1,7 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 require 'models/Database.php';
 
 $requete = "SELECT user_id, name FROM user";
