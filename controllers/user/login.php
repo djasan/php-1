@@ -1,8 +1,9 @@
 <?php
 require 'models/Database.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup_submit'])) {
-    $username = $_POST['username'];
+$errors = [];
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_submit'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
@@ -12,23 +13,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup_submit'])) {
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($user) {
-        $errors = "Utilisateur existant";
-    } else {
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-        $insert = $connexion->prepare("INSERT INTO user (name, email, password) VALUES (:name, :email, :password)");
-        $insert->bindParam(':name', $username);
-        $insert->bindParam(':email', $email);
-        $insert->bindParam(':password', $hashedPassword);
-        
-        if ($insert->execute()) {
+        // Comparaison en texte brut 
+        if ($password === $user['password']) {
+            session_start();
+            $_SESSION['user_name'] = $user['name']; 
             header("Location: /users");
             exit();
         } else {
-            $errors = "Erreur lors de l'inscription";
+            $errors[] = "Mot de passe incorrect";
         }
+    } else {
+        $errors[] = "Utilisateur non trouvé";
     }
 }
 
-include 'views/user/register.view.php';
+include 'views/user/login.view.php';
 ?>

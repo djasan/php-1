@@ -1,4 +1,5 @@
-<?php require 'models/Database.php';
+<?php
+require 'models/Database.php';
 
 $id = $_GET['id'];
 

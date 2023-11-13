@@ -1,5 +1,5 @@
-<?php require 'models/Database.php';
-session_start();
+<?php 
+require 'models/Database.php';
 
 $select_query = "SELECT * FROM `user`";
 $stmt = $connexion->query($select_query);
