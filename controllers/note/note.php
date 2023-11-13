@@ -1,5 +1,4 @@
 <?php
-
 require 'models/Database.php';
 
 $id = $_GET['id'];
@@ -9,5 +8,9 @@ $note->bindParam(':id', $id);
 $note->execute();
 $note = $note->fetch();
 
+$imagePath = 'uploads/' . $note['file_name'];
+$imageTag = file_exists($imagePath)
+    ? '<img src="' . $imagePath . '" alt="Image de la note">'
+    : 'Image non disponible';
 
 require 'views/note/note.view.php';

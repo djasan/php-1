@@ -1,7 +1,7 @@
 <?php require 'views/partials/header.php'; ?>
 
 <h2>Modifer cette note</h2>
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
     <label for="title">Titre :</label>
     <input type="text" name="title" id="title" value="<?= isset($_POST['title']) ? $_POST['title'] : $noteUpdate['title'] ?>">
     <label for="content">Contenu :</label>
@@ -29,6 +29,8 @@
             </option>
         <?php endforeach; ?>
     </select>
+    <label for="fileToUpload">Modifier l'image :</label>
+    <input type="file" name="fileToUpload" id="fileToUpload">
     <input type="submit" value="Modifier">
 </form>
 <?php
