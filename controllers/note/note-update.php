@@ -10,13 +10,12 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id']) || empty($_GET['id'])) {
 
 $id = $_GET['id'];
 
-$noteUpdate = $connexion->prepare('SELECT n.id, u.user_id, n.title, n.content, n.created_at, u.name, n.file_name 
-                                   FROM note AS n
-                                   INNER JOIN user AS u ON n.user_id = u.user_id
-                                   WHERE n.id = :id');
+$noteUpdate = $connexion->prepare('SELECT n.id, u.user_id, n.title, n.content, n.created_at, u.name, n.file_name FROM note AS n INNER JOIN user AS u ON n.user_id = u.user_id WHERE n.id = :id');
 
 $noteUpdate->bindParam(':id', $id);
+
 $noteUpdate->execute();
+
 $noteUpdate = $noteUpdate->fetch();
 
 if (empty($noteUpdate) || $noteUpdate === false) {
@@ -28,7 +27,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = trim(filter_var($_POST['title'], FILTER_SANITIZE_FULL_SPECIAL_CHARS));
     $content = trim(filter_var($_POST['content'], FILTER_SANITIZE_FULL_SPECIAL_CHARS));
     $author = trim(filter_var($_POST['author'], FILTER_SANITIZE_NUMBER_INT));
+    
+    // Vérification de l'image téléchargée
+    $fileToUpload = $_FILES['fileToUpload'];
 
+    if ($fileToUpload['error'] === UPLOAD_ERR_OK) {
+        // Insérer ici le code pour supprimer l'ancienne image
+        
+        $fileName = basename($fileToUpload['name']);
+        $uploadPath = "uploads/" . $fileName;
+
+        // Déplacer le fichier téléchargé
+        if (move_uploaded_file($fileToUpload['tmp_name'], $uploadPath)) {
+            $noteUpdate['file_name'] = $fileName;
+        } else {
+            $errors[] = "Erreur lors de l'upload de l'image.";
+        }
+    }
+    
     if (strlen($title) === 0) {
         $errors[] = 'Titre vide !!!';
     }
@@ -42,44 +58,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (strlen($content) >= 1000) {
-        $errors[] = 'Contenu supérieur à 1000 caratéres !!!';
+        $errors[] = 'Contenu supérieur à 1000 caractères !!!';
     }
 
     if (empty($_POST['author']) || strlen($_POST['author'] === 0)) {
-        $errors[] = 'Aucun auteur séléctionné !!!';
+        $errors[] = 'Aucun auteur sélectionné !!!';
     }
 
     if (empty($errors)) {
-        $fileName = basename($_FILES["fileToUpload"]["name"]);
-        $target_dir = "uploads/";
+        $noteNew = $connexion->prepare('UPDATE note SET title = :title, content = :content, user_id = :user_id, file_name = :file_name WHERE id = :id');
 
-        if (isset($_FILES['fileToUpload']) && $_FILES['fileToUpload']['error'] === UPLOAD_ERR_OK) {
-            $oldFileName = $noteUpdate['file_name'];
-            if (file_exists('uploads/' . $oldFileName)) {
-                unlink('uploads/' . $oldFileName);
-            }
+        $noteNew->bindParam(':title', $title, PDO::PARAM_STR);
+        $noteNew->bindParam(':content', $content, PDO::PARAM_STR);
+        $noteNew->bindParam(':user_id', $author, PDO::PARAM_INT);
+        $noteNew->bindParam(':file_name', $fileName, PDO::PARAM_STR);
+        $noteNew->bindParam(':id', $id, PDO::PARAM_INT);
 
-            $target_file = $target_dir . $fileName;
-            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                $successMessage = "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.";
-            } else {
-                $errors[] = "Sorry, there was an error uploading your file.";
-            }
-        }
-
-        if (empty($errors)) {
-            $noteNew = $connexion->prepare('UPDATE note SET title = :title, content = :content, user_id = :user_id, file_name = :file_name WHERE id = :id');
-
-            $noteNew->bindValue(':title', $title, PDO::PARAM_STR);
-            $noteNew->bindValue(':content', $content, PDO::PARAM_STR);
-            $noteNew->bindValue(':user_id', $author, PDO::PARAM_INT);
-            $noteNew->bindValue(':file_name', $fileName, PDO::PARAM_STR);
-            $noteNew->bindValue(':id', $id, PDO::PARAM_INT);
-
-            $noteNew->execute();
-            header('Location: /notes');
-            exit();
-        }
+        $noteNew->execute();
+        header('Location: /notes');
+        exit();
     }
 }
 

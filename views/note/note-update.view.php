@@ -1,6 +1,6 @@
 <?php require 'views/partials/header.php'; ?>
 
-<h2>Modifer cette note</h2>
+<h2>Modifier cette note</h2>
 <form method="POST" enctype="multipart/form-data">
     <label for="title">Titre :</label>
     <input type="text" name="title" id="title" value="<?= isset($_POST['title']) ? $_POST['title'] : $noteUpdate['title'] ?>">
@@ -11,25 +11,17 @@
         <option value=""></option>
 
         <?php foreach ($users as $user) : ?>
-            
-            <option value="<?= $user['user_id'] ?>"
-           
-           <?php 
-           if (isset($_POST['author'])) :
-            $author_id = (int) $_POST['author'];
-           else:
-            $author_id = (int) $noteUpdate['user_id'];
-           endif;
-
-           if ( isset($author_id) && ($author_id === $user['user_id']) ):  ?>
-                    selected
-          <?php endif; ?> 
-            >
+            <option value="<?= $user['user_id'] ?>" <?= $noteUpdate['user_id'] === $user['user_id'] ? 'selected' : '' ?>>
                 <?= $user['name'] ?>
             </option>
         <?php endforeach; ?>
     </select>
+    
     <label for="fileToUpload">Modifier l'image :</label>
+    <?php if (!empty($noteUpdate['file_name'])) : ?>
+        <img src="uploads/<?= $noteUpdate['file_name'] ?>" alt="Image actuelle de la note" style="max-width: 200px;">
+    <?php endif; ?>
+    
     <input type="file" name="fileToUpload" id="fileToUpload">
     <input type="submit" value="Modifier">
 </form>
@@ -37,9 +29,9 @@
 if (isset($errors) && !empty($errors)) :
     foreach ($errors as $error) :
 ?>
-    <p class="error"><?=$error?></p>    
+    <p class="error"><?= $error ?></p>    
 <?php
-        endforeach;
+    endforeach;
 endif;
 ?>
 

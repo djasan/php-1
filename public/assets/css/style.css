@@ -50,7 +50,7 @@ h1 {
 }
 
 p {
-  margin: 1rem 20px;
+  margin: 1rem 30px;
 }
 
 h2 {
@@ -98,10 +98,12 @@ ul {
 
 #new-note2 {
   border-radius: 15px;
-  background-color: lightgray;
+  background-color:  #384a61;
   font-size: 2rem;
-  width: 40%;
+  width: 28%;
+  margin-left: 10px;
   padding: 0px 8px;
+  text-align: center;
 }
 
 table {
@@ -144,5 +146,9 @@ color: white;
 padding : 10px;
 }
 .note {
+margin: 30px;
+}
+
+img {
 margin: 30px;
 }
