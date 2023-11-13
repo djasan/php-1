@@ -8,13 +8,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user_id = $_POST["user_id"];
     $newName = $_POST["name"];
     $newEmail = $_POST["email"];
+    $newPassword = $_POST["password"];
 
-    $update_query = "UPDATE `user` SET `name` = :name, `email` = :email WHERE `user_id` = :user_id";
+    $update_query = "UPDATE `user` SET `name` = :name, `email` = :email";
+    $parameters = [
+        ':name' => $newName,
+        ':email' => $newEmail,
+    ];
+
+    if (!empty($newPassword)) {
+        $newPasswordHash = password_hash($newPassword, PASSWORD_DEFAULT);
+        $update_query .= ", `password` = :password";
+        $parameters[':password'] = $newPasswordHash;
+    }
+
+    $update_query .= " WHERE `user_id` = :user_id";
+    $parameters[':user_id'] = $user_id;
+
     $stmt = $connexion->prepare($update_query);
-    $stmt->bindParam(':name', $newName);
-    $stmt->bindParam(':email', $newEmail);
-    $stmt->bindParam(':user_id', $user_id);
-    $stmt->execute();
+    $stmt->execute($parameters);
 
     header("Location: users");
     exit;

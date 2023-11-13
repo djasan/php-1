@@ -1,6 +1,19 @@
 <?php
 require 'models/Database.php';
 
+function checkIfAdmin($user_id, $connexion) {
+    $stmt = $connexion->prepare("SELECT is_admin FROM user WHERE user_id = :user_id");
+    $stmt->bindParam(':user_id', $user_id);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($result && $result['is_admin']) {
+        return true;
+    } else {
+        return false; 
+    }
+}
+
 $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_submit'])) {
@@ -15,7 +28,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_submit'])) {
     if ($user) {
         if (password_verify($password, $user['password'])) {
             session_start();
-            $_SESSION['user_name'] = $user['name']; 
+            $_SESSION['user_name'] = $user['name'];
+
+            // Vérification du statut d'administration
+            $is_admin = checkIfAdmin($user['user_id'], $connexion);
+            $_SESSION['is_admin'] = $is_admin;
+
             header("Location: /users");
             exit();
         } else {
