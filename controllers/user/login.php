@@ -13,8 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_submit'])) {
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($user) {
-        // Comparaison en texte brut 
-        if ($password === $user['password']) {
+        if (password_verify($password, $user['password'])) {
             session_start();
             $_SESSION['user_name'] = $user['name']; 
             header("Location: /users");

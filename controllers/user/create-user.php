@@ -7,14 +7,16 @@ require 'models/Database.php';
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $name = $_POST["name"];
     $email = $_POST["email"];
+    $password = $_POST["password"];
 
+    if (!empty($name) && !empty($email) && !empty($password)) {
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    if (!empty($name) && !empty($email)) {
-
-        $insert_query = "INSERT INTO `user` (`name`, `email`) VALUES (:name, :email)";
+        $insert_query = "INSERT INTO `user` (`name`, `email`, `password`) VALUES (:name, :email, :password)";
         $stmt = $connexion->prepare($insert_query);
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':password', $hashedPassword);
 
         if ($stmt->execute()) {
             header("Location: users");

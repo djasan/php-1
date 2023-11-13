@@ -10,6 +10,8 @@
     <label for="email">Email :</label>
     <input type="email" name="email" required>
     <br>
+    <label for="password">Mot de passe :</label>
+    <input type="password" name="password" required>
     <input type="submit" value="Créer">
 </form>
 

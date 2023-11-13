@@ -12,6 +12,7 @@
     <label for="email">Email :</label>
     <input type="email" name="email" value="<?php echo $user['email']; ?>">
     <br>
+    <input type="password" name="password" placeholder="Password" required>
     <input type="submit" value="Enregistrer les modifications">
 </form>
 
