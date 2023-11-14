@@ -16,12 +16,9 @@
             </option>
         <?php endforeach; ?>
     </select>
-    
     <label for="fileToUpload">Modifier l'image :</label>
     <?php if (!empty($noteUpdate['file_name'])) : ?>
-        <img src="uploads/<?= $noteUpdate['file_name'] ?>" alt="Image actuelle de la note" style="max-width: 200px;">
-    <?php endif; ?>
-    
+    <img src="uploads/<?= $noteUpdate['file_name'] ?>" alt="Image actuelle de la note" style="max-width: 200px;"> <?php endif; ?>
     <input type="file" name="fileToUpload" id="fileToUpload">
     <input type="submit" value="Modifier">
 </form>

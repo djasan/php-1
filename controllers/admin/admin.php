@@ -4,11 +4,11 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 require 'models/Database.php';
 
-$sql = "SELECT note.id AS Note_ID, note.user_id AS User_ID, user.name AS Name, note.title AS Title, note.content AS Content 
-        FROM note
-        LEFT JOIN user ON note.user_id = user.user_id";
-
 try {
+    $sql = "SELECT note.id AS Note_ID, note.user_id AS User_ID, user.name AS Name, note.title AS Title, note.content AS Content 
+            FROM note
+            LEFT JOIN user ON note.user_id = user.user_id";
+
     $result = $connexion->query($sql);
 
     if ($result) {

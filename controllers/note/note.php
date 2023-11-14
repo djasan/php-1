@@ -12,8 +12,10 @@ $note->execute();
 $note = $note->fetch();
 
 $imagePath = 'uploads/' . $note['file_name'];
-$imageTag = file_exists($imagePath)
-    ? '<img src="' . $imagePath . '" alt="Image de la note">'
-    : 'Image non disponible';
+$imageTag = '';
+
+if (!empty($note['file_name']) && file_exists($imagePath)) {
+    $imageTag = '<img src="' . $imagePath . '" alt="Image de la note">';
+}
 
 require 'views/note/note.view.php';

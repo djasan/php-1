@@ -31,16 +31,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $content = trim(filter_var($_POST['content'], FILTER_SANITIZE_FULL_SPECIAL_CHARS));
     $author = trim(filter_var($_POST['author'], FILTER_SANITIZE_NUMBER_INT));
     
-    // Vérification de l'image téléchargée
     $fileToUpload = $_FILES['fileToUpload'];
 
     if ($fileToUpload['error'] === UPLOAD_ERR_OK) {
-        // Insérer ici le code pour supprimer l'ancienne image
         
         $fileName = basename($fileToUpload['name']);
         $uploadPath = "uploads/" . $fileName;
 
-        // Déplacer le fichier téléchargé
         if (move_uploaded_file($fileToUpload['tmp_name'], $uploadPath)) {
             $noteUpdate['file_name'] = $fileName;
         } else {
